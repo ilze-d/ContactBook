@@ -25,19 +25,6 @@ app.get('/', (req, res) => {
     res.send('go to /entries to see entries')
 })
 
-app.get('/entries/add', (req, res) => {
-    const { contactName, phoneNumber } = req.query;
-    const INSERT_CONTACTS_QUERY = `INSERT INTO entries (contactName, phoneNumber) values ('${contactName}', '${phoneNumber}')`;
-    connection.query(INSERT_CONTACTS_QUERY, (err, results) => {
-        if(err) {
-            return res.send(err)
-        }
-        else {
-            return res.send('added')
-        }
-    })
-})
-
 app.get('/entries', (req, res) => {
     connection.query(SELECT_ALL_entries_QUERY, (err, results) => {
         if(err) {
@@ -47,6 +34,32 @@ app.get('/entries', (req, res) => {
             return res.json({
                 data: results
             })
+        }
+    })
+})
+
+app.get('/entries/delete', (req, res) => {
+    const { entryID } = req.query;
+    const REMOVE_CONTACTS_QUERY = `DELETE FROM entries WHERE entryID='${entryID}'`;
+    connection.query(REMOVE_CONTACTS_QUERY, (err, results) => {
+        if(err) {
+            return res.send(err)
+        }
+        else {
+            return res.send('removed')
+        }
+    })
+})
+
+app.get('/entries/add', (req, res) => {
+    const { contactName, phoneNumber } = req.query;
+    const INSERT_CONTACTS_QUERY = `INSERT INTO entries (contactName, phoneNumber) values ('${contactName}', '${phoneNumber}')`;
+    connection.query(INSERT_CONTACTS_QUERY, (err, results) => {
+        if(err) {
+            return res.send(err)
+        }
+        else {
+            return res.send('added')
         }
     })
 })
