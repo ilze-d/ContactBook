@@ -1,7 +1,7 @@
 # ContactBook
 
 Dependancies: <br/>
-[https://nodejs.org/en/]<br/>
+<li>[https://nodejs.org/en/]</li>
 <br/>
 DB is hosted on Google Cloud Platform<br/>
 <br/>
