@@ -1,5 +1,6 @@
 # ContactBook
-
+This project is made as a technical exercise.
+<br/>
 ## Dependancies
 [https://nodejs.org/en/]<br/>
 <br/>
